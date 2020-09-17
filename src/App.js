@@ -1,9 +1,9 @@
 import React from 'react';
-import EmployeeList from "./component/EmployeeList";
+import Homepage from "./pages/Homepage";
 
 
 function App() {
-  return <EmployeeList />;
+  return <Homepage />;
 }
 
 export default App;

@@ -36,7 +36,7 @@ class EmployeeList extends Component {
       return(
         <Container>
             <Jumbotron />
-            <Search />
+            <Search handleInputChange={this.handleInputChange}/>
             <EmployeeDetail results={this.state.results} />
         </Container>
       )
