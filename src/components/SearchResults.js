@@ -2,8 +2,8 @@ import React from "react";
 
 export default function SearchResults(props) {
   return (
-    <tbody>
-      {props.results.map((result) => (
+      <>
+      {props.employee.map((result) => (
         <tr>
           <th scope="row" key={result.id.value}>
             <img alt={result.name.first} src={result.picture.thumbnail} />
@@ -16,6 +16,6 @@ export default function SearchResults(props) {
           <td>{result.dob.date.substring(0, 10)}</td>
         </tr>
       ))}
-    </tbody>
+      </>
   );
 }

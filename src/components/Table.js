@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchResults from './SearchResults';
 
-export default function Table() {
+export default function Table(props) {
     return (
         <table className="table table-striped">
             <thead>
@@ -14,7 +14,7 @@ export default function Table() {
                 </tr>
             </thead>
             <tbody>
-                <SearchResults />
+                <SearchResults employee={props.employee}/>
             </tbody>
         </table>
    

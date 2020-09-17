@@ -4,7 +4,6 @@ import Container from "../components/Container";
 import Jumbotron from '../components/Jumbotron';
 import SearchForm from '../components/SearchForm';
 import Table from '../components/Table';
-import SearchResults from '../components/SearchResults';
 
 function Homepage() {
     const [employee, setEmployee] = useState([]);
@@ -25,7 +24,6 @@ function Homepage() {
             <Jumbotron />
             <SearchForm handleInputChange={handleInputChange}/>
             <Table employee={employee}/>
-            {/* <SearchResults /> */}
         </Container>
     )
 }
