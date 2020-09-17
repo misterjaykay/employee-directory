@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import EmployeeDetail from "./EmployeeDetail";
+import Container from "./Container";
+import Jumbotron from "./Jumbotron";
+import Search from "./Search";
 
 class EmployeeList extends Component {
   state = {
@@ -9,25 +12,28 @@ class EmployeeList extends Component {
   };
 
   componentDidMount() {
-    this.searchEmployees("20");
+    this.getAllEmployees("20");
   };
 
-  searchEmployees = query => {
+  getAllEmployees = query => {
     API.getApi(query)
     //   .then((res) => console.log("res", res.data.results))
       .then(res => this.setState({ results: res.data.results }))
-      .then(console.log("success", this.state.results))
+      .then(console.log("success"))
       .catch((err) => console.log(err));
   }
 
+  searchEmployee() {
+      this.state.results.filter(e => e !== this.state.results.first)
+  }
 
   render() {
       return(
-        <EmployeeDetail
-            results={this.state.results}
-            // name={this.state.result.results[0].name}
-            // phone={this.state.result.results[0].phone}
-        />
+        <Container>
+            <Jumbotron />
+            <Search />
+            <EmployeeDetail results={this.state.results} />
+        </Container>
       )
   }
 }
