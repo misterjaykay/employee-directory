@@ -5,7 +5,7 @@ function Search() {
         <div className="container">
             <form>
                 <div className="form-group">
-                    <input type="text" className="form-control" placeholder="Search Here"/>
+                    <input type="text" onChange={this.handleInputChange} className="form-control" placeholder="Search Here"/>
                 </div>
             </form>
         </div>

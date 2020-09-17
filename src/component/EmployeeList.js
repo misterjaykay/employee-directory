@@ -23,9 +23,14 @@ class EmployeeList extends Component {
       .catch((err) => console.log(err));
   }
 
-  searchEmployee() {
-      this.state.results.filter(e => e !== this.state.results.first)
-  }
+  handleInputChange = ({ target }) => {
+    let value = target.value;
+    const name = target.name;
+    
+    this.setState({
+      [name]:value
+    });
+  };
 
   render() {
       return(
