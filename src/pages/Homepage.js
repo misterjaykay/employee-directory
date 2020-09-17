@@ -15,8 +15,13 @@ function Homepage() {
         .catch(err => console.log(err));
     }, [])
 
-    const handleInputChange = event => {
-        console.log(event.target);
+    const handleInputChange = ({ target }) => {
+        console.log(target.value);
+        let name = target.value;
+        // const filterOne = employee.filter(e => !e.includes(name));
+        const filterOne = employee.filter(e => e.name.first.includes(name))
+        console.log(filterOne);
+        setEmployee(filterOne);
     }
 
     return(
