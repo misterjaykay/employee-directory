@@ -7,6 +7,7 @@ import Table from '../components/Table';
 
 function Homepage() {
     const [employee, setEmployee] = useState([]);
+    // const [oneEmployee, setOneEmployee] = useState([]);
 
     useEffect(() => {
         API.getLists("20")
@@ -19,7 +20,7 @@ function Homepage() {
         console.log(target.value);
         let name = target.value;
         // const filterOne = employee.filter(e => !e.includes(name));
-        const filterOne = employee.filter(e => e.name.first.includes(name))
+        const filterOne = employee.filter(e => e.name.first.toLowerCase().includes(name))
         console.log(filterOne);
         setEmployee(filterOne);
     }
