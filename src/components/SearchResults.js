@@ -4,16 +4,16 @@ export default function SearchResults(props) {
   return (
       <>
       {props.employee.map((result) => (
-        <tr>
-          <th scope="row" key={result.id.value}>
+        <tr key={result.id.value}>
+          <th className="text-center" scope="row">
             <img alt={result.name.first} src={result.picture.thumbnail} />
           </th>
-          <td>
+          <td className="text-center">
             {result.name.first} {result.name.last}
           </td>
-          <td>{result.phone}</td>
-          <td>{result.email}</td>
-          <td>{result.dob.date.substring(0, 10)}</td>
+          <td className="text-center">{result.phone}</td>
+          <td className="text-center"><a href="">{result.email}</a></td>
+          <td className="text-center">{result.dob.date.substring(0, 10)}</td>
         </tr>
       ))}
       </>

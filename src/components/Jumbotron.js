@@ -1,11 +1,11 @@
 import React from 'react';
 
-export default function Jumbotron() {
+export default function Jumbotron(props) {
     return (
-        <div className="jumbotron text-center">
+        <div className={`jumbotron jumbotron${props.fluid ? "-fluid" : ""} bg-primary text-light text-center`}>
             <div className="container">
-                <h2>Employee Directory</h2>
-                <p>Welcome to Employee Directory.</p><p> Feel free to browse company's employees list.</p>
+                <h1 className="mb-2" >Employee Directory</h1>
+                <p className="mb-0">Welcome to Employee Directory.</p><p> Feel free to browse company's employees list.</p>
             </div>
         </div>
     )
