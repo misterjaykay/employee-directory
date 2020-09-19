@@ -11,34 +11,51 @@ function Homepage() {
   const [employee, setEmployee] = useState([]);
   const [oneEmployee, setOneEmployee] = useState([]);
   const [order, setOrder] = useState("descend");
-  // const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     API.getList("20")
-      // .then(res => console.log(res.data.results))
       .then((res) => {
         setEmployee(res.data.results);
         setOneEmployee(res.data.results);
-        // console.log(res.data.results);
+        console.log(res.data.results);
       })
       .catch((err) => console.log(err));
   }, []);
 
   const handleInputChange = ({ target }) => {
-    // console.log(target.value);
     let filter = target.value;
-    // const filterOne = employee.filter(e => !e.includes(name));
     const filterOne = employee.filter((item) => {
       let value = Object.values(item).join("").toLowerCase();
       return value.indexOf(filter.toLowerCase()) !== -1;
     });
-    // console.log(filterOne);
     setOneEmployee(filterOne);
   };
 
-  const handleIconClick = (event) => {
+  const handleNameIconClick = (event) => {
     order === "descend" ? setOrder("ascend") : setOrder("descend");
-    console.log(order);
+    // console.log(order);
+    if (order === "descend") {
+      const sortArr = employee.sort(function (a, b) {
+        var textA = a.email.toUpperCase();
+        var textB = b.email.toUpperCase();
+        return textA < textB ? -1 : textA > textB ? 1 : 0;
+      });
+      console.log(sortArr);
+      setOneEmployee(sortArr);
+    } else {
+      const sortArr = employee.sort(function (a, b) {
+        var textA = a.email.toUpperCase();
+        var textB = b.email.toUpperCase();
+        return textA > textB ? -1 : textA < textB ? 1 : 0;
+      });
+      console.log(sortArr);
+      setOneEmployee(sortArr);
+    }
+  };
+
+  const handleEmailIconClick = (event) => {
+    order === "descend" ? setOrder("ascend") : setOrder("descend");
+    // console.log(order);
     if (order === "descend") {
       const sortArr = employee.sort(function (a, b) {
         var textA = a.name.first.toUpperCase();
@@ -72,7 +89,8 @@ function Homepage() {
         <Row>
           <Col size="md-12">
             <Table 
-              handleIconClick={handleIconClick} 
+              handleNameIconClick={handleNameIconClick} 
+              handleEmailIconClick={handleEmailIconClick}
               employee={oneEmployee} 
             />
           </Col>

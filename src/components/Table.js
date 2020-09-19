@@ -8,10 +8,12 @@ export default function Table(props) {
                 <tr>
                 <th className="text-center" scope="col">Photo</th>
                 <th className="text-center" scope="col">Name 
-                    <i onClick={() => props.handleIconClick()} className="fas fa-sort"/>
+                    <i onClick={() => props.handleNameIconClick()} className="fas fa-sort"></i>
                 </th>
                 <th className="text-center" scope="col">Phone</th>
-                <th className="text-center" scope="col">Email</th>
+                <th className="text-center" scope="col">Email
+                    <i onClick={() => props.handleEmailIconClick()} className="fas fa-sort"></i>
+                </th>
                 <th className="text-center" scope="col">DOB</th>
                 </tr>
             </thead>

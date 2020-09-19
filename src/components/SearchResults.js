@@ -12,7 +12,7 @@ export default function SearchResults(props) {
             {result.name.first} {result.name.last}
           </td>
           <td className="text-center">{result.phone}</td>
-          <td className="text-center"><a href="">{result.email}</a></td>
+          <td className="text-center"><a href={`mailto:${result.email}`}>{result.email}</a></td>
           <td className="text-center">{result.dob.date.substring(0, 10)}</td>
         </tr>
       ))}
