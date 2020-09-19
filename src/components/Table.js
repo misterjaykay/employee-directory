@@ -7,7 +7,9 @@ export default function Table(props) {
             <thead>
                 <tr>
                 <th className="text-center" scope="col">Photo</th>
-                <th className="text-center" scope="col">Name</th>
+                <th className="text-center" scope="col">Name 
+                    <i onClick={() => props.handleIconClick()} className="fas fa-sort"/>
+                </th>
                 <th className="text-center" scope="col">Phone</th>
                 <th className="text-center" scope="col">Email</th>
                 <th className="text-center" scope="col">DOB</th>
