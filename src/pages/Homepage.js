@@ -4,6 +4,8 @@ import Container from "../components/Container";
 import Jumbotron from "../components/Jumbotron";
 import SearchForm from "../components/SearchForm";
 import Table from "../components/Table";
+import Row from "../components/Row";
+import Col from "../components/Col";
 
 function Homepage() {
   const [employee, setEmployee] = useState([]);
@@ -26,7 +28,7 @@ function Homepage() {
     // console.log(target.value);
     let filter = target.value;
     // const filterOne = employee.filter(e => !e.includes(name));
-    const filterOne = employee.filter(item => {
+    const filterOne = employee.filter((item) => {
       let value = Object.values(item).join("").toLowerCase();
       return value.indexOf(filter.toLowerCase()) !== -1;
     });
@@ -34,40 +36,49 @@ function Homepage() {
     setOneEmployee(filterOne);
   };
 
-  const handleIconClick = event => {
-
-    order === "descend" ? setOrder("ascend") : setOrder("descend")
+  const handleIconClick = (event) => {
+    order === "descend" ? setOrder("ascend") : setOrder("descend");
     console.log(order);
     if (order === "descend") {
-      const sortArr = employee.sort(function(a, b) {
+      const sortArr = employee.sort(function (a, b) {
         var textA = a.name.first.toUpperCase();
         var textB = b.name.first.toUpperCase();
-        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+        return textA < textB ? -1 : textA > textB ? 1 : 0;
       });
       console.log(sortArr);
       setOneEmployee(sortArr);
     } else {
-      const sortArr = employee.sort(function(a, b) {
+      const sortArr = employee.sort(function (a, b) {
         var textA = a.name.first.toUpperCase();
         var textB = b.name.first.toUpperCase();
-        return (textA > textB) ? -1 : (textA < textB) ? 1 : 0;
+        return textA > textB ? -1 : textA < textB ? 1 : 0;
       });
       console.log(sortArr);
       setOneEmployee(sortArr);
     }
-
-  }
+  };
 
   return (
-    <Container fluid={""}>
-      <Jumbotron fluid={""}/>
-      <SearchForm 
-      handleInputChange={handleInputChange} />
-      <Table 
-      handleIconClick={handleIconClick}
-      employee={oneEmployee}
-       />
-    </Container>
+    <>
+      <Jumbotron fluid="fluid" />
+      <Container>
+        <Row>
+          <Col size="md-6">
+            <SearchForm 
+              handleInputChange={handleInputChange} 
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col size="md-12">
+            <Table 
+              handleIconClick={handleIconClick} 
+              employee={oneEmployee} 
+            />
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }
 
